@@ -1,8 +1,36 @@
 module.exports = function (app){
     app.post('/api/course/:courseId/section', createSection);
     app.get('/api/course/:courseId/section', findSectionsForCourse);
+    app.post('/api/section/:sectionId/enrollment' , enrollStudentInSection);
+    app.get('/api/student/section', findSectionsForStudent);
 
     var sectionModel = require('../models/section/section.model.server');
+    var enrollmentModel = require('../models/enrollment/enrollment.model.server');
+
+    function findSectionsForStudent(req,res) {
+        var studentId = req.session.currentUser._id;
+        enrollmentModel.findSectionsForStudent(studentId)
+            .then(function (enrollments) {
+                res.json(enrollments);
+            });
+    }
+
+    function enrollStudentInSection(req, res){
+        var sectionId = req.params['sectionId'];
+        var studentId = req.session.currentUser._id;
+        var enrollment = {
+            section: sectionId,
+            student: studentId
+        };
+
+        sectionModel.decrementSectionSeats(sectionId)
+            .then(function() {
+               return enrollmentModel.enrollStudentInSection(enrollment)
+            })
+            .then(function(enrollment){
+                res.json(enrollment);
+            })
+    }
 
     function createSection(req,res){
         var section = req.body;
