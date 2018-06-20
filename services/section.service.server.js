@@ -4,9 +4,19 @@ module.exports = function (app){
     app.post('/api/section/:sectionId/enrollment' , enrollStudentInSection);
     app.get('/api/student/section', findSectionsForStudent);
     app.delete("/api/student/section/:sectionId",disenrollStudent);
+    app.get('api/section/:sectionId', findEnrollmentsForSection);
 
     var sectionModel = require('../models/section/section.model.server');
     var enrollmentModel = require('../models/enrollment/enrollment.model.server');
+
+    function findEnrollmentsForSection(req,res){
+        var sectionId= req.params['sectionId'];
+        enrollmentModel.findEnrollmentsForSection(sectionId)
+            .then(function (enrollments) {
+                res.json(enrollments)
+            })
+
+    }
 
     function findSectionsForStudent(req,res) {
         var studentId = req.session.currentUser._id;

@@ -14,10 +14,15 @@ function deleteEnrollment(sectionId,studentId){
     return enrollmentModel.remove({section: sectionId, student:studentId})
 }
 
+function findEnrollmentsForSection(sectionId) {
+    return enrollmentModel.find({sectionId: sectionId})
+}
+
 var api = {
     enrollStudentInSection: enrollStudentInSection,
     findSectionsForStudent: findSectionsForStudent,
-    deleteEnrollment: deleteEnrollment
+    deleteEnrollment: deleteEnrollment,
+    findEnrollmentsForSection: findEnrollmentsForSection
 }
 
 module.exports = api;
