@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d003f899-0373-40e7-bb86-b91350d02f78" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/enrollment/enrollment.model.server.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/enrollment/enrollment.model.server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/section.service.server.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/section.service.server.js" afterDir="false" />
-    </list>
+    <list default="true" id="d003f899-0373-40e7-bb86-b91350d02f78" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -195,12 +191,12 @@
       <workItem from="1529291882360" duration="8083000" />
       <workItem from="1529340193436" duration="101000" />
       <workItem from="1529352861561" duration="6786000" />
-      <workItem from="1529521912411" duration="2704000" />
+      <workItem from="1529521912411" duration="2740000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30200000" />
+    <option name="totallyTimeSpent" value="30236000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -214,9 +210,9 @@
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32827586" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.6711676" weight="0.21241379" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.6711676" visible="true" weight="0.21241379" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.29517242" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.29517242" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
