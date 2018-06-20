@@ -17,7 +17,7 @@ app.use(function(req,res,next) {
 });
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/course-manager-MEAN');
+mongoose.connect('mongodb://heroku_lbq17ggx:5r2tltpkvap1eo06934kg58ipr@ds163530.mlab.com:63530/heroku_lbq17ggx');
 
 var session = require('express-session');
 app.use(session({
@@ -31,4 +31,4 @@ userService(app);
 
 require('./services/section.service.server')(app);
 
-app.listen(3000);
+app.listen(process.env.PORT || 8080);
