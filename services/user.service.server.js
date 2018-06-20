@@ -5,6 +5,16 @@ module.exports = function(app) {
     app.get('/api/user/:userId', findUserById);
     app.post('/api/logout', logout);
     app.post('/api/login', login);
+    app.put("/api/profile",updateProfile)
+
+    // app.get("/api/user",findAllUsers)
+    // app.post("/api/register",createUser)
+    // app.get("/api/profile",profile)
+    // app.post("/api/login",login)
+    // app.get("/api/user/:username",findUserByUsername)
+    // app.put("/api/profile",updateProfile)
+    // app.post("/api/logout",logout)
+    // app.delete("/api/profile",deleteProfile)
 
     var userModel = require('../models/user/user.model.server');
 
@@ -16,6 +26,15 @@ module.exports = function(app) {
             })
     }
 
+    function updateProfile(req, res){
+        var user = req.body;
+        return userModel.updateUser(user)
+            .then(function (updatedUser) {
+                return res.send(updatedUser);
+            })
+    }
+
+
     function profile(req,res){
         res.send(req.session['currentUser']);
     }
@@ -25,12 +44,32 @@ module.exports = function(app) {
         res.send(200);
     }
 
-    function login(req,res){
+    // function login(req,res){
+    //     var credentials = req.body;
+    //     userModel.findUserByCredentials(credentials)
+    //         .then(function(user) {
+    //             req.session['currentUser'] = user;
+    //             res.json(user);
+    //         })
+    // }
+
+
+    function login(req, res){
         var credentials = req.body;
-        userModel.findUserByCredentials(credentials)
-            .then(function(user) {
-                req.session['currentUser'] = user;
-                res.json(user);
+        return userModel.findUserByCredentials(credentials)
+            .then(function (user) {
+                if(user==null)
+                {
+                    return res.send({
+                        username: 'NOT FOUND'
+                    })
+                }
+                else{
+                    req.session['currentUser'] = user;
+                    var halfhour = 1800000
+                    req.session.cookie.maxAge = halfhour
+                    return res.send(user);
+                }
             })
     }
 

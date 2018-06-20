@@ -10,9 +10,14 @@ function findSectionsForStudent(studentId) {
     return enrollmentModel.find({student: studentId}).populate('section').exec();
 }
 
+function deleteEnrollment(sectionId,studentId){
+    return enrollmentModel.remove({section: sectionId, student:studentId})
+}
+
 var api = {
     enrollStudentInSection: enrollStudentInSection,
-    findSectionsForStudent: findSectionsForStudent
+    findSectionsForStudent: findSectionsForStudent,
+    deleteEnrollment: deleteEnrollment
 }
 
 module.exports = api;
