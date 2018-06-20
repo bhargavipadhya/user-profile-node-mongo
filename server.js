@@ -20,6 +20,14 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://heroku_lbq17ggx:5r2tltpkvap1eo06934kg58ipr@ds163530.mlab.com:63530/heroku_lbq17ggx');
 
 var session = require('express-session');
+
+app.use(express.static('./dist/node-mongodb-user-profile'));
+
+app.get('/*', function(req,res) {
+
+    res.sendFile(path.join(__dirname,'/dist/node-mongodb-user-profile/index.html'));
+});
+
 app.use(session({
     resave: false,
     saveUninitialized: true,
